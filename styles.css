@@ -94,6 +94,10 @@ li {
     margin-right: 50px;
 }
 
+li a{
+    text-decoration: none;
+}
+
 li:hover {
     color: blueviolet;
     transition: 1s;
