@@ -40,10 +40,19 @@ html{
 }
 
 .mnu{
+    text-decoration: none;
     justify-content: right;
 }
 
-a:visited{
+.mnu a:link{
+    color: #ffffff;
+}
+
+.mnu a{
+    text-decoration: none;
+}
+
+.mnu a:visited{
     color: white;
 }
 
