@@ -12,6 +12,8 @@ let tasks = []
 
 let tsk_array = localStorage.getItem('tasks')
 
+let status_html = ''
+
 if (tsk_array === null){
     tasks = []
 }
@@ -28,7 +30,14 @@ function addtask(){
 
     else{
 
-    tasks.push(input.value)
+    let temp_dict = {
+        txt : input.value,
+        status : "false"
+
+    }
+
+
+    tasks.push(temp_dict)
 
     input.value = ''
 
@@ -67,10 +76,21 @@ function Screen(){
     }
     else{
     tasks.forEach( tarefa =>{
+
+        if (tarefa['status'] == 'false'){
+            status_html = 'black'
+        }
+
+        else{
+            status_html = 'green'
+        }
+
+
+
         numbers = numbers+1
         newArray = newArray + `
-        <li id='${numbers}' class='lista'>
-            <p>${tarefa}</p>
+        <li style="background-color:${status_html}" id='${numbers}' class='lista'>
+            <p>${tarefa['txt']}</p>
         </li>
         <div class='buttonEdit'>
             <button onclick="edit_tsk(${numbers})" id='edit'>Edit</button>
@@ -80,6 +100,7 @@ function Screen(){
         `
 
         tasks_html.innerHTML = newArray
+
     })}
 }
 
@@ -90,6 +111,13 @@ function complete_tsk(number){
     let tskID = document.getElementById(number)
     tskID.style.transition = '1.5s'
     tskID.style.backgroundColor = 'green'
+    tasks[number]['status'] = 'true'
+
+    console.log(tasks)
+
+    let tsk_string = JSON.stringify(tasks)
+    localStorage.setItem('tasks', tsk_string)
+
 
 
 }
