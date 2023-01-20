@@ -125,7 +125,7 @@ function complete_tsk(number){
 function edit_tsk(number){
     console.log(number)
     let edit_txt = prompt('Digite o novo texto')
-    tasks[number] = edit_txt
+    tasks[number]['txt'] = edit_txt
 
     let tsk_string = JSON.stringify(tasks)
     localStorage.setItem('tasks', tsk_string)
@@ -147,6 +147,13 @@ function remove_tsk(number){
 
     container.style.height = containerH-200+'px'
 }
+
+input.addEventListener("keyup", function(e) {
+    console.log(e)
+    if (e.key === 'Enter') {
+        addtask()
+    }
+    })
 
 botao.addEventListener("click", addtask)
 
