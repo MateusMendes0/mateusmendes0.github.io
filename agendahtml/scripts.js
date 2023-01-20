@@ -93,9 +93,9 @@ function Screen(){
             <p>${tarefa['txt']}</p>
         </li>
         <div class='buttonEdit'>
-            <button onclick="edit_tsk(${numbers})" id='edit'>Edit</button>
-            <button onclick="remove_tsk(${numbers})" id='delete'>Delete</button>
-            <button onclick="complete_tsk(${numbers})" id='complete${numbers}' class="complete">Complete</button>
+            <button onclick="edit_tsk(${numbers})" id='edit'><i style="background-color: transparent;" class="fa-solid fa-pencil"></i></button>
+            <button onclick="remove_tsk(${numbers})" id='delete'><i style="background-color: transparent;" class="fa-solid fa-trash"></i></button>
+            <button onclick="complete_tsk(${numbers})" id='complete${numbers}' class="complete"><i style="background-color: transparent;" class="fa-solid fa-check"></i></button>
         </div>
         `
 
