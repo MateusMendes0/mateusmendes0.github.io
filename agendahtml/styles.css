@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(0, 0, 0);
+    font-family: 'Oxygen', sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
+
+.container {
+    background-color: aliceblue;
+    height: 300px;
+    margin: 200px;
+    margin-top: 60px;
+    display: flex;
+    border-radius: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+
+.container h2{
+    margin-top: 10px;
+    color:black;
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 100px;
+    display: block;
+    float:left
+}
+
+.container input{
+    border-color: black;
+    color:black;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    border-bottom: white;
+    background-color: transparent;
+    width: 300px;
+}
+
+.container button{
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+
+.actions{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+.tasks{
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasks ul {
+    background-color: transparent;
+}
+
+.lista{
+    margin-top: 50px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    min-height: 90px;
+    min-width: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    max-width: 300px;
+    animation: fadeinout 1s linear 1;
+}
+
+.lista p{
+    background-color: transparent;
+}
+
+.buttonEdit{
+    width: 20px;
+    display: flex;
+    margin-top: 5px;
+    background-color: transparent;
+    align-items: flex-end;
+    animation: fadeinout 1s linear 1;
+}
+
+.buttonEdit button{
+    border-color: transparent;
+    margin-left: 5px;
+}
+
+#edit{
+    background-color: mediumblue;
+}
+
+#edit:hover{
+    scale: 110%;
+    transition:all 1s ease-out;
+}
+
+#delete{
+    background-color: red;
+}
+
+#delete:hover{
+    scale: 1.1;
+    transition:all 1s ease-out;
+}
+
+.complete{
+    background-color: green;
+}
+
+.complete:hover{
+    scale: 1.1;
+    transition:all 1s ease-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes fadeinout {
+    0% {
+      opacity: 0;
+    }
+    10%{
+        opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
