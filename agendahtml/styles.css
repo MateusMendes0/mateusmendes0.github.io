@@ -3,18 +3,35 @@
     padding: 0;
     box-sizing: border-box;
     background-color: rgb(0, 0, 0);
+    transition: background 2s;
     font-family: 'Oxygen', sans-serif;
+}
+
+:root {
+    --text-color:black;
+    --bg-tsk:aliceblue;
 }
 
 button{
     cursor: pointer;
 }
 
+#change{
+    color: white;
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    background-color: transparent;
+    margin: 10px;
+    margin-bottom: 0px;
+    border-color: white;
+}
+
 .container {
-    background-color: aliceblue;
+    background-color: var(--bg-tsk);
     height: 30%;
     margin: 10%;
-    margin-top: 60px;
+    margin-top: 20px;
     display: flex;
     border-radius: 20px;
     justify-content: flex-start;
@@ -26,22 +43,21 @@ button{
 
 .container h2{
     margin-top: 10px;
-    color:black;
+    color: var(--text-color);
     background-color: transparent;
     font-weight: 700;
     font-size: 100px;
-    display: block;
-    float:left
 }
 
 .container input{
     border-color: black;
-    color:black;
+    color:var(--text-color);
     padding: 10px;
     border-radius: 5px;
     margin: 10px;
     border-bottom: white;
     background-color: transparent;
+    border-color: var(--text-color);
     width: 300px
 }
 
@@ -53,7 +69,7 @@ button{
 }
 
 .actions{
-    background-color: aliceblue;
+    background-color: var(--bg-tsk);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +89,7 @@ button{
 
 .lista{
     margin-top: 50px;
-    background-color: black;
+    background-color: var(--bg-tsk);
     color: white;
     padding: 20px;
     min-height: 90px;
@@ -84,6 +100,7 @@ button{
     border-radius: 20px;
     max-width: 300px;
     animation: fadeinout 1s linear 1;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
 
 .lista p{

@@ -14,6 +14,11 @@ let tsk_array = localStorage.getItem('tasks')
 
 let status_html = ''
 
+let dark_m = document.getElementById("change")
+
+let r = document.querySelector(":root")
+
+
 if (tsk_array === null){
     tasks = []
 }
@@ -155,6 +160,25 @@ input.addEventListener("keyup", function(e) {
     }
     })
 
+
+
+function change_color(){
+    var r_current = getComputedStyle(r)
+
+    if (r_current.getPropertyValue("--text-color") == "black"){
+    r.style.setProperty("--text-color","white")
+    r.style.setProperty("--bg-tsk", "black")
+    }
+
+    else{
+    r.style.setProperty("--text-color","black")
+    r.style.setProperty("--bg-tsk", "aliceblue")
+    }
+
+}
+
 botao.addEventListener("click", addtask)
+
+dark_m.addEventListener("click", change_color)
 
 Screen()
