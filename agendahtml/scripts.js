@@ -10,7 +10,13 @@ let container = document.getElementById("container")
 
 let tasks = []
 
+let personal_tsk = []
+
+let work_tsk = []
+
 let tsk_array = localStorage.getItem('tasks')
+let tsk_per = localStorage.getItem('tasks_personal')
+let tsk_wor = localStorage.getItem('tasks_work')
 
 let status_html = ''
 
@@ -26,14 +32,37 @@ else{
 tasks = JSON.parse(tsk_array)
 }
 
+
+
+if (tsk_per === null){
+    personal_tsk = []
+}
+else{
+personal_tsk = JSON.parse(tsk_per)
+}
+
+
+
+if (tsk_wor === null){
+    work_tsk = []
+}
+else{
+work_tsk = JSON.parse(tsk_wor)
+}
+
+
+
+
 console.log(tasks)
 
-function addtask(){
+function addtask(type_str){
     if (input.value === ''){
 
     }
 
     else{
+
+        console.log(type_str)
 
     let temp_dict = {
         txt : input.value,
@@ -41,46 +70,80 @@ function addtask(){
 
     }
 
+    if (type_str == "1"){
+        tasks.push(temp_dict)
+        let tsk_string = JSON.stringify(tasks)
+        localStorage.setItem('tasks', tsk_string)
+        Screen("1")
+    }
 
-    tasks.push(temp_dict)
+    else if (type_str == "2"){
+        personal_tsk.push(temp_dict)
+        let tsk_string = JSON.stringify(personal_tsk)
+        localStorage.setItem('tasks_personal', tsk_string)
+        Screen("2")
+    }
+
+    else if(type_str == "3"){
+        work_tsk.push(temp_dict)
+        let tsk_string = JSON.stringify(work_tsk)
+        localStorage.setItem('tasks_work', tsk_string)
+        Screen("3")
+    }
 
     input.value = ''
 
-    let tsk_string = JSON.stringify(tasks)
-    localStorage.setItem('tasks', tsk_string)
-    Screen()
-    let complete = document.getElementById("")
     }
 }
 
-function Screen(){
+function Screen(type="1"){
 
-    style = getComputedStyle(container)
-    let containerH =style.height.replace(/[a-z]/gi, '')
-
-    containerH = parseInt(containerH)
-
-    height_tsk = tasks.length * 200
-    console.log(tasks.length)
-
-    if (300+height_tsk <= containerH){ 
+    if (type == '1'){
+        height_tsk = tasks.length * 200
+        console.log(tasks.length)
+        container.style.height = 300+height_tsk+'px'
+    }
+    else if (type == '2'){
+        height_tsk = personal_tsk.length * 200
+        console.log(personal_tsk.length)
+        container.style.height = 300+height_tsk+'px'
     }
 
-    else{
-
-    container.style.height = 300+height_tsk+'px'
-
+    else if (type == '3'){
+        height_tsk = work_tsk.length * 200
+        console.log(work_tsk.length)
+        container.style.height = 300+height_tsk+'px'
     }
 
     let newArray = ''
     let numbers = -1
 
-    if (tasks.length <= 0){
+    let type_list = null
+
+    if (type == '1'){
+        type_list = tasks
+        console.log(type_list)
+
+    }
+
+    else if (type == '2'){
+        type_list = personal_tsk
+    }
+
+    else if (type == '3'){
+        type_list = work_tsk
+    }
+
+
+
+
+    if (type_list.length <= 0){
         tasks_html.innerHTML = newArray
 
     }
     else{
-    tasks.forEach( tarefa =>{
+
+    type_list.forEach( tarefa =>{
 
         if (tarefa['status'] == 'false'){
             status_html = 'black'
@@ -99,8 +162,8 @@ function Screen(){
         </li>
         <div class='buttonEdit'>
             <button onclick="edit_tsk(${numbers})" id='edit'><i style="background-color: transparent;" class="fa-solid fa-pencil"></i></button>
-            <button onclick="remove_tsk(${numbers})" id='delete'><i style="background-color: transparent;" class="fa-solid fa-trash"></i></button>
-            <button onclick="complete_tsk(${numbers})" id='complete${numbers}' class="complete"><i style="background-color: transparent;" class="fa-solid fa-check"></i></button>
+            <button onclick="remove_tsk(${numbers}, ${type})" id='delete'><i style="background-color: transparent;" class="fa-solid fa-trash"></i></button>
+            <button onclick="complete_tsk(${numbers}, ${type})" id='complete${numbers}' class="complete"><i style="background-color: transparent;" class="fa-solid fa-check"></i></button>
         </div>
         `
 
@@ -110,53 +173,114 @@ function Screen(){
 }
 
 
-function complete_tsk(number){
-    console.log(number)
+function complete_tsk(number, list){
 
     let tskID = document.getElementById(number)
     tskID.style.transition = '1.5s'
     tskID.style.backgroundColor = 'green'
-    tasks[number]['status'] = 'true'
 
-    console.log(tasks)
+    if ( list == '1'){
+        tasks[number]['status'] = 'true'
+        let tsk_string = JSON.stringify(tasks)
+        localStorage.setItem('tasks', tsk_string)
 
-    let tsk_string = JSON.stringify(tasks)
-    localStorage.setItem('tasks', tsk_string)
+    }
+
+    if ( list == '2'){
+        personal_tsk[number]['status'] = 'true'
+        let tsk_string = JSON.stringify(personal_tsk)
+        localStorage.setItem('tasks_personal', tsk_string)
+
+    }
+
+    if ( list == '3'){
+        work_tsk[number]['status'] = 'true'
+        let tsk_string = JSON.stringify(work_tsk)
+        localStorage.setItem('tasks_work', tsk_string)
+
+    }
+
+
+
 
 
 
 }
 
-function edit_tsk(number){
-    console.log(number)
-    let edit_txt = prompt('Digite o novo texto')
-    tasks[number]['txt'] = edit_txt
+function edit_tsk(number, list){
 
+    let edit_txt = prompt('Digite o novo texto')
+
+    if ( list == '1'){
+
+    tasks[number]['txt'] = edit_txt
     let tsk_string = JSON.stringify(tasks)
     localStorage.setItem('tasks', tsk_string)
+    }
+    if ( list == '2'){
+
+        personal_tsk[number]['txt'] = edit_txt
+        let tsk_string = JSON.stringify(personal_tsk)
+        localStorage.setItem('tasks_personal', tsk_string)
+    }
+
+    if ( list == '3'){
+
+        work_tsk[number]['txt'] = edit_txt
+        let tsk_string = JSON.stringify(work_tsk)
+        localStorage.setItem('tasks_work', tsk_string)
+    }
+
+
 
     let tskID = document.getElementById(number)
     tskID.innerHTML = edit_txt
 }
 
-function remove_tsk(number){
-    tasks.splice(number,1)
-    console.log(tasks)
-    let tsk_string = JSON.stringify(tasks)
-    localStorage.setItem('tasks', tsk_string)
-    Screen()
+function remove_tsk(number, list){
+    if ( list == "1"){
+        tasks.splice(number,1)
+        console.log(tasks)
+        let tsk_string = JSON.stringify(tasks)
+        localStorage.setItem('tasks', tsk_string)
+        Screen("1")
 
-    let containerH =style.height.replace(/[a-z]/gi, '')
+    }
 
-    containerH = parseInt(containerH)
+    else if ( list == "2"){
+        personal_tsk.splice(number,1)
+        console.log(personal_tsk)
+        let tsk_string = JSON.stringify(personal_tsk)
+        localStorage.setItem('tasks_personal', tsk_string)
+        Screen("2")
+    
+        let containerH =style.height.replace(/[a-z]/gi, '')
+    
+        containerH = parseInt(containerH)
+    
+        container.style.height = containerH-200+'px'
+    }
 
-    container.style.height = containerH-200+'px'
+    else if ( list == "3"){
+        work_tsk.splice(number,1)
+        console.log(work_tsk)
+        let tsk_string = JSON.stringify(work_tsk)
+        localStorage.setItem('tasks_work', tsk_string)
+        Screen("3")
+    
+        let containerH =style.height.replace(/[a-z]/gi, '')
+    
+        containerH = parseInt(containerH)
+    
+        container.style.height = containerH-200+'px'
+    }
+
 }
 
 input.addEventListener("keyup", function(e) {
     console.log(e)
     if (e.key === 'Enter') {
-        addtask()
+        addtask('1')
     }
     })
 
@@ -177,8 +301,67 @@ function change_color(){
 
 }
 
-botao.addEventListener("click", addtask)
+let personal = document.getElementById("personal")
+
+let work = document.getElementById("work")
+
+let filter_n = document.getElementById("filter_n")
+
+let filter_p = document.getElementById("filter_p")
+
+let filter_w = document.getElementById("filter_w")
+
+botao.addEventListener("click", addtask(type_str="1"))
+
+botao.addEventListener("click", function(){
+    addtask("1")
+})
+
+personal.addEventListener("click", function(){
+    addtask("2")
+})
+
+work.addEventListener("click", function(){
+    addtask("3")
+})
+
+
+filter_n.addEventListener("click", function(){
+    Screen("1")
+    filter_p.style.backgroundColor = "black"
+    filter_n.style.backgroundColor = "white"
+    filter_w.style.backgroundColor = "black"
+
+    filter_n.style.color = "black"
+    filter_p.style.color = "white"
+    filter_w.style.color = "white"
+})
+
+filter_p.addEventListener("click", function(){
+    Screen("2")
+    filter_p.style.backgroundColor = "white"
+    filter_n.style.backgroundColor = "black"
+    filter_w.style.backgroundColor = "black"
+
+    filter_n.style.color = "white"
+    filter_p.style.color = "black"
+    filter_w.style.color = "white"
+})
+
+filter_w.addEventListener("click", function(){
+    Screen("3")
+    filter_p.style.backgroundColor = "black"
+    filter_n.style.backgroundColor = "black"
+    filter_w.style.backgroundColor = "white"
+
+    filter_n.style.color = "white"
+    filter_p.style.color = "white"
+    filter_w.style.color = "black"
+})
 
 dark_m.addEventListener("click", change_color)
 
 Screen()
+
+filter_n.style.backgroundColor = "white"
+filter_n.style.color = "black"

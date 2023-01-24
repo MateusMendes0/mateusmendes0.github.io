@@ -12,29 +12,38 @@
       rel="stylesheet"
     />
     <title>Tasks</title>
-    <script src="https://kit.fontawesome.com/89719a83d2.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/89719a83d2.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
     <div>
-    <button id="change"><i class="fa-solid fa-moon"></i></button>
+      <button id="change"><i class="fa-solid fa-moon"></i></button>
     </div>
 
     <div id="container" class="container">
-
       <h2>Tasks</h2>
 
       <div class="actions">
         <input type="text" id="input" placeholder="Adicione uma tarefa" />
         <button id="botao"><i class="fa-solid fa-plus"></i></button>
+        <div class="hidden">
+          <button id="personal" class="sub-button">Personal</button>
+          <button id="work" class="sub-button">Work</button>
+        </div>
+      </div>
+      <div class="filters">
+        <button id="filter_n">Normal</button>
+        <button id="filter_p">Personal</button>
+        <button id="filter_w">Work</button>
       </div>
       <div class="tasks">
-        <ul id="tasks">
-        </ul>
+        <ul id="tasks"></ul>
       </div>
     </div>
   </body>
 
   <script src="scripts.js"></script>
-  </script>
 </html>
