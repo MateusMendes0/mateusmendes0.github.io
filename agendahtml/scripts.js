@@ -24,6 +24,8 @@ let dark_m = document.getElementById("change")
 
 let r = document.querySelector(":root")
 
+let buttons = document.querySelectorAll(".filters-buttons")
+
 
 if (tsk_array === null){
     tasks = []
@@ -315,53 +317,51 @@ botao.addEventListener("click", addtask(type_str="1"))
 
 botao.addEventListener("click", function(){
     addtask("1")
+    buttons.forEach( button => {
+        button.classList.remove('selected')})
+
+    buttons[0].classList.add('selected');
 })
 
 personal.addEventListener("click", function(){
     addtask("2")
+    buttons.forEach( button => {
+        button.classList.remove('selected')})
+
+    buttons[1].classList.add('selected');
 })
 
 work.addEventListener("click", function(){
     addtask("3")
+    buttons.forEach( button => {
+        button.classList.remove('selected')})
+
+    buttons[2].classList.add('selected');
 })
 
 
 filter_n.addEventListener("click", function(){
-    Screen("1")
-    filter_p.style.backgroundColor = "black"
-    filter_n.style.backgroundColor = "white"
-    filter_w.style.backgroundColor = "black"
-
-    filter_n.style.color = "black"
-    filter_p.style.color = "white"
-    filter_w.style.color = "white"
-})
+    Screen("1")})
 
 filter_p.addEventListener("click", function(){
     Screen("2")
-    filter_p.style.backgroundColor = "white"
-    filter_n.style.backgroundColor = "black"
-    filter_w.style.backgroundColor = "black"
 
-    filter_n.style.color = "white"
-    filter_p.style.color = "black"
-    filter_w.style.color = "white"
 })
 
 filter_w.addEventListener("click", function(){
     Screen("3")
-    filter_p.style.backgroundColor = "black"
-    filter_n.style.backgroundColor = "black"
-    filter_w.style.backgroundColor = "white"
 
-    filter_n.style.color = "white"
-    filter_p.style.color = "white"
-    filter_w.style.color = "black"
+})
+
+
+buttons.forEach( button => {
+    button.addEventListener('click',() => {
+        buttons.forEach( button => {
+            button.classList.remove('selected')})
+
+        button.classList.add('selected')});
 })
 
 dark_m.addEventListener("click", change_color)
 
 Screen()
-
-filter_n.style.backgroundColor = "white"
-filter_n.style.color = "black"

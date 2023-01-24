@@ -68,15 +68,25 @@ button{
     
 }
 .filters{
-    display: flex;
+    display: block;
     margin-top: 10px;
     border-radius: 10px;
+    background-color: transparent;
 }
 
-.filters button{
+.filters-buttons{
+    margin-left: 10px;
     padding: 20px;
     border-radius: 10px;
 }
+
+.filters-buttons.selected{
+    color : black;
+    background-color:white;
+    scale: 1.15;
+    transition: 1s;
+}
+
 
 .actions{
     background-color: var(--bg-tsk);
@@ -123,7 +133,7 @@ button{
     margin-top: 5px;
     background-color: transparent;
     align-items: flex-end;
-    animation: fadeinout 1s linear 1;
+    animation:   1s linear 1;
 }
 
 .buttonEdit button{
