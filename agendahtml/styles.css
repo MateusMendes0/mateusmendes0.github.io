@@ -87,6 +87,13 @@ button{
     transition: 1s;
 }
 
+.completed-status{
+    background-color: transparent;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 10px;
+}
+
 
 .actions{
     background-color: var(--bg-tsk);

@@ -26,6 +26,8 @@ let r = document.querySelector(":root")
 
 let buttons = document.querySelectorAll(".filters-buttons")
 
+let current_page = '1'
+
 
 if (tsk_array === null){
     tasks = []
@@ -100,20 +102,71 @@ function addtask(type_str){
 
 function Screen(type="1"){
 
+    current_page = type
+
+    let checkbox = document.getElementById("completed-status").checked
+
     if (type == '1'){
-        height_tsk = tasks.length * 200
-        console.log(tasks.length)
-        container.style.height = 300+height_tsk+'px'
+        let tamanho = 0
+        tasks.forEach(tarefa_check =>{
+        if (checkbox == false && tarefa_check['status'] == 'false'){
+            tamanho += 1
+        }
+
+        else if (checkbox == true && tarefa_check['status'] == 'false'){
+            tamanho += 1
+        }
+
+        else if (checkbox == true && tarefa_check['status'] == 'true'){
+            tamanho = tasks.length
+        }
+
+       })
+
+        height_tsk = tamanho * 200
+        container.style.height = 320+height_tsk+'px'
     }
     else if (type == '2'){
-        height_tsk = personal_tsk.length * 200
-        console.log(personal_tsk.length)
+        let tamanho = 0
+        personal_tsk.forEach(tarefa_check =>{
+        if (checkbox == false && tarefa_check['status'] == 'false'){
+            tamanho += 1
+        }
+
+        else if (checkbox == true && tarefa_check['status'] == 'false'){
+            tamanho += 1
+        }
+
+
+        else if (checkbox == true && tarefa_check['status'] == 'true'){
+            tamanho = personal_tsk.length
+        }
+
+       })
+
+        height_tsk = tamanho * 200
         container.style.height = 300+height_tsk+'px'
     }
 
     else if (type == '3'){
-        height_tsk = work_tsk.length * 200
-        console.log(work_tsk.length)
+        let tamanho = 0
+        work_tsk.forEach(tarefa_check =>{
+        if (checkbox == false && tarefa_check['status'] == 'false'){
+            tamanho += 1
+        }
+
+        else if (checkbox == true && tarefa_check['status'] == 'false'){
+            tamanho += 1
+        }
+
+
+        else if (checkbox == true && tarefa_check['status'] == 'true'){
+            tamanho = work_tsk.length
+        }
+
+       })
+
+        height_tsk = tamanho * 200
         container.style.height = 300+height_tsk+'px'
     }
 
@@ -155,6 +208,13 @@ function Screen(type="1"){
             status_html = 'green'
         }
 
+        if (tarefa['status'] == 'true' && checkbox == false){
+            console.log(checkbox)
+            numbers = numbers+1
+
+        }
+        else{
+
 
 
         numbers = numbers+1
@@ -168,7 +228,7 @@ function Screen(type="1"){
             <button onclick="complete_tsk(${numbers}, ${type})" id='complete${numbers}' class="complete"><i style="background-color: transparent;" class="fa-solid fa-check"></i></button>
         </div>
         `
-
+        }
         tasks_html.innerHTML = newArray
 
     })}
@@ -363,5 +423,10 @@ buttons.forEach( button => {
 })
 
 dark_m.addEventListener("click", change_color)
+
+let checkbox_1 = document.getElementById("completed-status")
+checkbox_1.addEventListener("click", function(){
+    Screen(current_page)
+})
 
 Screen()
