@@ -67,6 +67,17 @@ button{
     border-radius: 5px;
     
 }
+
+.hidden{
+    background-color: transparent;
+}
+
+.sub-button{
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
 .filters{
     display: block;
     margin-top: 10px;

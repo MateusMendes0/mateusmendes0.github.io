@@ -8,6 +8,8 @@ let tasks_html = document.getElementById("tasks")
 
 let container = document.getElementById("container")
 
+let buttonEdit = document.getElementById("buttonEdit")
+
 let tasks = []
 
 let personal_tsk = []
@@ -109,66 +111,53 @@ function Screen(type="1"){
     if (type == '1'){
         let tamanho = 0
         tasks.forEach(tarefa_check =>{
-        if (checkbox == false && tarefa_check['status'] == 'false'){
-            tamanho += 1
-        }
-
-        else if (checkbox == true && tarefa_check['status'] == 'false'){
-            tamanho += 1
-        }
-
-        else if (checkbox == true && tarefa_check['status'] == 'true'){
+        if (checkbox == true ){
             tamanho = tasks.length
         }
 
-       })
+        else if (checkbox == false && tarefa_check['status'] == "false")
+            tamanho +=1
+    })
 
-        height_tsk = tamanho * 200
-        container.style.height = 320+height_tsk+'px'
-    }
-    else if (type == '2'){
-        let tamanho = 0
-        personal_tsk.forEach(tarefa_check =>{
-        if (checkbox == false && tarefa_check['status'] == 'false'){
-            tamanho += 1
-        }
-
-        else if (checkbox == true && tarefa_check['status'] == 'false'){
-            tamanho += 1
-        }
-
-
-        else if (checkbox == true && tarefa_check['status'] == 'true'){
-            tamanho = personal_tsk.length
-        }
-
-       })
+       
 
         height_tsk = tamanho * 200
         container.style.height = 300+height_tsk+'px'
-    }
+}
+
+    else if (type == '2'){
+        let tamanho = 0
+        personal_tsk.forEach(tarefa_check =>{
+        if (checkbox == true ){
+            tamanho = personal_tsk.length
+        }
+
+        else if (checkbox == false && tarefa_check['status'] == "false")
+            tamanho +=1
+    })
+
+       
+
+        height_tsk = tamanho * 200
+        container.style.height = 300+height_tsk+'px'
+}
 
     else if (type == '3'){
         let tamanho = 0
         work_tsk.forEach(tarefa_check =>{
-        if (checkbox == false && tarefa_check['status'] == 'false'){
-            tamanho += 1
-        }
-
-        else if (checkbox == true && tarefa_check['status'] == 'false'){
-            tamanho += 1
-        }
-
-
-        else if (checkbox == true && tarefa_check['status'] == 'true'){
+        if (checkbox == true ){
             tamanho = work_tsk.length
         }
 
-       })
+        else if (checkbox == false && tarefa_check['status'] == "false")
+            tamanho +=1
+    })
+
+       
 
         height_tsk = tamanho * 200
         container.style.height = 300+height_tsk+'px'
-    }
+}
 
     let newArray = ''
     let numbers = -1
