@@ -27,6 +27,24 @@ button{
     border-color: white;
 }
 
+#alert{
+    color: #ffffff;
+    background-color: red;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    left: 45%;
+    width: 10%;
+    height: 10%;
+    min-width: 100px;
+    display: none;
+    opacity: 0;
+}
+
+#alert h3{
+    background-color: red   ;
+}
+
 .container {
     background-color: var(--bg-tsk);
     height: 30%;
@@ -99,10 +117,15 @@ button{
 }
 
 .completed-status{
+    color: var(--text-color);
     background-color: transparent;
     margin: 0px;
     padding: 0px;
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0px;
 }
 
 

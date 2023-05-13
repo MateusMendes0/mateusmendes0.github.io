@@ -63,7 +63,13 @@ console.log(tasks)
 
 function addtask(type_str){
     if (input.value === ''){
-
+        
+        // alrt = document.getElementById("alert")
+        // alrt.style.display = "flex"
+        // alrt.style.opacity = "1"
+        // setTimeout(function(){
+        //     alrt.style.display='none'
+        // }, 2000)
     }
 
     else{
@@ -361,8 +367,6 @@ let filter_n = document.getElementById("filter_n")
 let filter_p = document.getElementById("filter_p")
 
 let filter_w = document.getElementById("filter_w")
-
-botao.addEventListener("click", addtask(type_str="1"))
 
 botao.addEventListener("click", function(){
     addtask("1")
