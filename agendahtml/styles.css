@@ -27,24 +27,6 @@ button{
     border-color: white;
 }
 
-#alert{
-    color: #ffffff;
-    background-color: red;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    left: 45%;
-    width: 10%;
-    height: 10%;
-    min-width: 100px;
-    display: none;
-    opacity: 0;
-}
-
-#alert h3{
-    background-color: red   ;
-}
-
 .container {
     background-color: var(--bg-tsk);
     height: 30%;
@@ -247,12 +229,6 @@ button{
     .container {width: 100vw;display: flex;flex-direction: column;margin: 0px;margin-top: 3vh}
     .lista {min-width: 90vw; max-width: 90vw;}
     }
-
-
-
-
-
-
 
 @keyframes fadeinout {
     0% {
